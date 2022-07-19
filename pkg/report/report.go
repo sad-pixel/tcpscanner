@@ -10,6 +10,7 @@ import (
 	"github.com/sad-pixel/tcpscanner/pkg/stats"
 )
 
+// createCSV creates a CSV file and writes the headers
 func createCSV(path string) error {
 	csvFile, err := os.Create(path)
 	if err != nil {
@@ -27,6 +28,7 @@ func createCSV(path string) error {
 	return nil
 }
 
+// GetFileHandle returns a file handle to the CSV report file, creating it if it does not exist.
 func GetFileHandle(path string) (*os.File, error) {
 	_, err := os.Stat(path)
 	if errors.Is(err, os.ErrNotExist) {
@@ -44,6 +46,7 @@ func GetFileHandle(path string) (*os.File, error) {
 	return file, nil
 }
 
+// WriteStatToCSV appends the slice of stats.PacketStat to the CSV file
 func WriteStatToCSV(w *csv.Writer, records []stats.PacketStat) error {
 	writeableRecords := [][]string{}
 	writtenAt := time.Now().UTC().Format(time.RFC1123)

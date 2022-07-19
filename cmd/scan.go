@@ -13,6 +13,7 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
+// SniffPackets is the entry point for the "scan" command
 func SniffPackets(ctx *cli.Context) error {
 	log.Println("TCP Scanner started")
 	log.Println("Press CTRL-C to exit")
